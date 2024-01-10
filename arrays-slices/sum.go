@@ -11,23 +11,15 @@ func Sum(numbers []int) int {
 	return sum
 }
 
-func SumAll(numbers []int, numbers2 []int) []int {
-	return nil
-}
-
-func foo(nums ...int) {
-	fmt.Println(nums, "")
-	total := 0
-
-	for _, num := range nums {
-		total += num
+func SumAll(numbersToSum ...[]int) []int {
+	var sums []int
+	for _, numbers := range numbersToSum {
+		sums = append(sums, Sum(numbers))
 	}
-
-	fmt.Println(total)
-	fmt.Println("len:", len(nums))
+	return sums
 }
 
 func main() {
-	bar := []int{1, 2, 3, 4}
-	foo(bar...)
+
+	fmt.Println(SumAll([]int{1, 2}), []int{0, 9})
 }
